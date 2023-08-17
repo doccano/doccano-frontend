@@ -1,0 +1,42 @@
+{
+  "name": "doccano",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "fix:prettier": "prettier --write ."
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxtjs/i18n": "^8.0.0-rc.2",
+    "@types/node": "^18.17.3",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-standard-with-typescript": "^37.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "nuxt": "^3.6.5",
+    "nuxt-quasar-ui": "^2.0.5",
+    "prettier": "^3.0.1",
+    "sass": "^1.65.1",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "@quasar/extras": "^1.16.5",
+    "axios": "^1.4.0",
+    "pinia": "^2.1.6",
+    "quasar": "^2.12.4"
+  }
+}
