@@ -1,5 +1,14 @@
 <script lang="ts" setup>
+import { useAuthStore } from '@/stores/auth'
+
+const { $router } = useNuxtApp()
+const auth = useAuthStore()
 const localePath = useLocalePath()
+
+const logout = async () => {
+  await auth.logout()
+  await $router.push(localePath('/'))
+}
 </script>
 
 <template>
@@ -13,11 +22,13 @@ const localePath = useLocalePath()
       <layouts-the-header-button-dark-mode />
       <layouts-the-header-button-locale />
       <q-btn
+        v-if="!auth.isLoggedIn"
         outline
         no-caps
         :label="$t('user.login')"
         @click="$router.push(localePath('/login'))"
       />
+      <q-btn v-if="auth.isLoggedIn" outline no-caps :label="$t('user.signOut')" @click="logout" />
     </q-toolbar>
   </q-header>
 </template>

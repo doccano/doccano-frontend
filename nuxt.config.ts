@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: ['nuxt-quasar-ui', '@nuxtjs/i18n', '@pinia/nuxt'],
+  modules: ['nuxt-quasar-ui', '@nuxtjs/i18n', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
 
   runtimeConfig: {
     public: {

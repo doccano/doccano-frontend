@@ -1,16 +1,19 @@
 import { defineStore } from 'pinia'
+import type { UserItem } from '@/models/user'
 
 export const useAuthStore = defineStore({
   id: 'auth',
 
+  persist: true,
+
   state: () => ({
     isLoggedIn: false,
-    isStaff: false
+    user: null as UserItem | null
   }),
 
   getters: {
     allowUserToCreateProject(): boolean {
-      return this.isStaff
+      return this.user !== null ? this.user.isStaff : false
     }
   },
 
@@ -19,7 +22,9 @@ export const useAuthStore = defineStore({
       const { $repositories } = useNuxtApp()
       try {
         await $repositories.auth.login(username, password)
+        const user = await $repositories.user.getProfile()
         this.isLoggedIn = true
+        this.user = user
       } catch (error) {
         throw new Error('The credential is invalid')
       }
@@ -29,8 +34,7 @@ export const useAuthStore = defineStore({
       const { $repositories } = useNuxtApp()
       await $repositories.auth.logout()
       this.isLoggedIn = false
-      // commit('setIsStaff', false)
-      // commit('clearUsername')
+      this.user = null
     }
   }
 })
