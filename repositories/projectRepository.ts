@@ -1,7 +1,7 @@
 import type BaseRepository from './baseRepository'
-import { Page } from '@/models/page'
-import { Project } from '@/models/project'
-import { TagItem } from '@/models/tag'
+import { Page } from '@/domain/models/page'
+import { Project } from '@/domain/models/project'
+import { TagItem } from '@/domain/models/tag'
 
 function toModel(item: Record<string, any>): Project {
   return new Project(

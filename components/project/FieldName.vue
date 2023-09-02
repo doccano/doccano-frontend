@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { validateMinLength, validateNameMaxLength } from '~/models/project'
+import { validateMinLength, validateNameMaxLength } from '@/domain/models/project'
 
 const { t } = useI18n()
 const props = defineProps({
@@ -24,3 +24,4 @@ const emits = defineEmits<{
     @update:model-value="emits('update:modelValue', $event)"
   />
 </template>
+domain/models/project

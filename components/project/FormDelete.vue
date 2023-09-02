@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Project } from '@/models/project'
+import type { Project } from '@/domain/models/project'
 
 const { t } = useI18n()
 
@@ -41,3 +41,4 @@ const emits = defineEmits<{
     </q-card-actions>
   </q-card>
 </template>
+domain/models/project

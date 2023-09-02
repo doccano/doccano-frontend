@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ProjectType } from '@/models/project'
-import { allProjectTypes } from '@/models/project'
+import type { ProjectType } from '@/domain/models/project'
+import { allProjectTypes } from '@/domain/models/project'
 
 const { t } = useI18n()
 
@@ -37,3 +37,4 @@ const translateTypeName = (type: string): string => {
     </template>
   </q-select>
 </template>
+domain/models/projectdomain/models/project

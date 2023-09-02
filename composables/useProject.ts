@@ -1,5 +1,5 @@
-import { Page } from '@/models/page'
-import type { Project } from '@/models/project'
+import { Page } from '@/domain/models/page'
+import type { Project } from '@/domain/models/project'
 import type { ProjectRepository } from '@/repositories/projectRepository'
 
 export const useProject = (repository: ProjectRepository) => {

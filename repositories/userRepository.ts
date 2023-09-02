@@ -1,5 +1,5 @@
 import type BaseRepository from './baseRepository'
-import { UserItem } from '@/models/user'
+import { UserItem } from '@/domain/models/user'
 
 function toModel(item: { [key: string]: any }): UserItem {
   return new UserItem(item.id, item.username, item.is_superuser, item.is_staff)

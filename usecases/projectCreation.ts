@@ -1,5 +1,5 @@
-import { Project } from '@/models/project'
-import { TagItem } from '@/models/tag'
+import { Project } from '@/domain/models/project'
+import { TagItem } from '@/domain/models/tag'
 import type { ProjectRepository } from '@/repositories/projectRepository'
 
 interface ProjectFields {

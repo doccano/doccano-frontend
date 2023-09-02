@@ -6,7 +6,7 @@ import {
   SequenceLabeling,
   allProjectTypes,
   canDefineLabel
-} from '@/models/project'
+} from '@/domain/models/project'
 import { ProjectApplicationService } from '@/usecases/projectCreation'
 
 const { t } = useI18n()
@@ -144,3 +144,4 @@ const url = computed(() => {
     </q-card-actions>
   </q-card>
 </template>
+domain/models/project
