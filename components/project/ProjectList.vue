@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { dateFormat } from '@vuejs-community/vue-filter-date-format'
+import { useAuthStore } from '@/stores/auth'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -8,6 +9,7 @@ const { selected, projects, listProjects, deleteProjects, cloneProject, canClone
   useProject($repositories.project)
 const router = useRouter()
 const route = useRoute()
+const auth = useAuthStore()
 
 const dialogDelete = ref(false)
 const filter = ref('')
@@ -79,8 +81,8 @@ const onRequest = async (props: any) => {
 
 <template>
   <q-card bordered>
-    <q-card-section>
-      <q-btn color="primary" no-caps label="Create" />
+    <q-card-section v-if="auth.allowUserToCreateProject">
+      <q-btn color="primary" no-caps :label="t('generic.create')" to="projects/create" />
       <q-btn
         color="primary"
         no-caps

@@ -154,6 +154,7 @@ export class Project {
     return `${this.projectType}Project`
   }
 
+  // TODO: hasImageTask
   get isImageProject(): boolean {
     return [ImageClassification, ImageCaptioning, BoundingBox, Segmentation].includes(
       this.projectType

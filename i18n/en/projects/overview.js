@@ -6,6 +6,7 @@ export default {
   sequenceLabeling: 'Sequence Labeling',
   sequenceToSequence: 'Sequence to sequence',
   allowSingleLabel: 'Allow single label',
+  multiLabel: 'Multi-label classification',
   randomizeDocOrder: 'Randomize document order',
   shareAnnotations: 'Share annotations across all users',
   delete: 'Delete',
