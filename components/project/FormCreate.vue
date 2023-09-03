@@ -7,7 +7,7 @@ import {
   allProjectTypes,
   allowLabelTypeCreation
 } from '@/domain/models/project'
-import { CreateProjectUsecase } from 'usecases/createProjectUsecase'
+import { CreateProjectUsecase } from '@/usecases/createProjectUsecase'
 
 const { t } = useI18n()
 const { $repositories } = useNuxtApp()

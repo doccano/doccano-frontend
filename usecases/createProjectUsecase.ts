@@ -1,6 +1,6 @@
 import { Project } from '@/domain/models/project'
 import { Tag } from '@/domain/models/tag'
-import type { ProjectRepository } from '@/repositories/projectRepository'
+import type { ProjectRepository } from '@/domain/repositories/projectRepository'
 
 interface ProjectFields {
   name: string

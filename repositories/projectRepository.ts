@@ -2,6 +2,7 @@ import type BaseRepository from './baseRepository'
 import { Page } from '@/domain/models/page'
 import { Project } from '@/domain/models/project'
 import { Tag } from '@/domain/models/tag'
+import type { ProjectRepository } from '@/domain/repositories/projectRepository'
 
 function toModel(item: Record<string, any>): Project {
   return new Project(
@@ -71,7 +72,7 @@ export class SearchQuery {
   }
 }
 
-export class ProjectRepository {
+export class ApiProjectRepository implements ProjectRepository {
   constructor(private readonly request: BaseRepository) {}
 
   async list(query: Record<string, any>): Promise<Page<Project>> {

@@ -1,6 +1,6 @@
 import { Page } from '@/domain/models/page'
 import type { Project } from '@/domain/models/project'
-import type { ProjectRepository } from '@/repositories/projectRepository'
+import type { ProjectRepository } from '@/domain/repositories/projectRepository'
 
 export const useProject = (repository: ProjectRepository) => {
   const router = useRouter()

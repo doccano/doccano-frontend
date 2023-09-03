@@ -1,7 +1,7 @@
-import { AuthRepository } from '@/repositories/authRepository'
+import { ApiAuthRepository } from '@/repositories/authRepository'
 import BaseRepository from '@/repositories/baseRepository'
-import { ProjectRepository } from '@/repositories/projectRepository'
-import { UserRepository } from '@/repositories/userRepository'
+import { ApiProjectRepository } from '@/repositories/projectRepository'
+import { ApiUserRepository } from '@/repositories/userRepository'
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
@@ -9,9 +9,9 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       repositories: {
-        auth: new AuthRepository(baseRepository),
-        user: new UserRepository(baseRepository),
-        project: new ProjectRepository(baseRepository)
+        auth: new ApiAuthRepository(baseRepository),
+        user: new ApiUserRepository(baseRepository),
+        project: new ApiProjectRepository(baseRepository)
       }
     }
   }

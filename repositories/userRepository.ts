@@ -1,11 +1,12 @@
 import type BaseRepository from './baseRepository'
 import { User } from '@/domain/models/user'
+import type { UserRepository } from '@/domain/repositories/userRepository'
 
 function toModel(item: { [key: string]: any }): User {
   return new User(item.id, item.username, item.is_superuser, item.is_staff)
 }
 
-export class UserRepository {
+export class ApiUserRepository implements UserRepository {
   constructor(private readonly request: BaseRepository) {}
 
   async getProfile(): Promise<User> {
