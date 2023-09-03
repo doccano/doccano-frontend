@@ -5,9 +5,9 @@ import {
   ImageClassification,
   SequenceLabeling,
   allProjectTypes,
-  canDefineLabel
+  allowLabelTypeCreation
 } from '@/domain/models/project'
-import { ProjectApplicationService } from '@/usecases/projectCreation'
+import { CreateProjectUsecase } from 'usecases/createProjectUsecase'
 
 const { t } = useI18n()
 const { $repositories } = useNuxtApp()
@@ -39,15 +39,15 @@ const isSequenceLabelingProject = computed((): boolean => {
 })
 
 const _canDefineLabel = computed((): boolean => {
-  return canDefineLabel(editedItem.projectType as any)
+  return allowLabelTypeCreation(editedItem.projectType as any)
 })
 
 const formCreate = ref<QForm | null>(null)
 
 const createProject = async () => {
   if (await formCreate.value!.validate()) {
-    const usecase = new ProjectApplicationService($repositories.project)
-    const project = await usecase.create(editedItem)
+    const usecase = new CreateProjectUsecase($repositories.project)
+    const project = await usecase.handle(editedItem)
     await router.push(`/projects/${project.id}`)
     await nextTick(() => {
       editedItem = initializeProject()
@@ -144,4 +144,3 @@ const url = computed(() => {
     </q-card-actions>
   </q-card>
 </template>
-domain/models/project

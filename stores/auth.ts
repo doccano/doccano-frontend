@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { UserItem } from '@/domain/models/user'
+import type { User } from '@/domain/models/user'
 
 export const useAuthStore = defineStore({
   id: 'auth',
@@ -8,7 +8,7 @@ export const useAuthStore = defineStore({
 
   state: () => ({
     isLoggedIn: false,
-    user: null as UserItem | null
+    user: null as User | null
   }),
 
   getters: {

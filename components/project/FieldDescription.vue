@@ -21,4 +21,3 @@ const emits = defineEmits<{
     @update:model-value="emits('update:modelValue', $event)"
   />
 </template>
-domain/models/project

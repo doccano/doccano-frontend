@@ -1,5 +1,5 @@
 import { Project } from '@/domain/models/project'
-import { TagItem } from '@/domain/models/tag'
+import { Tag } from '@/domain/models/tag'
 import type { ProjectRepository } from '@/repositories/projectRepository'
 
 interface ProjectFields {
@@ -17,10 +17,10 @@ interface ProjectFields {
   allowMemberToCreateLabelType: boolean
 }
 
-export class ProjectApplicationService {
+export class CreateProjectUsecase {
   constructor(private readonly repository: ProjectRepository) {}
 
-  public async create({
+  public async handle({
     name,
     description,
     projectType,
@@ -46,50 +46,11 @@ export class ProjectApplicationService {
       allowOverlappingSpans,
       enableGraphemeMode,
       useRelation,
-      tags.map((tag) => TagItem.create(tag)),
+      tags.map((tag) => Tag.create(tag)),
       allowMemberToCreateLabelType
     )
     try {
       return await this.repository.create(project)
-    } catch (e: any) {
-      throw new Error(e.response.data.detail)
-    }
-  }
-
-  public async update(
-    projectId: number,
-    {
-      name,
-      description,
-      projectType,
-      enableRandomOrder,
-      enableSharingMode,
-      exclusiveCategories,
-      allowOverlappingSpans,
-      enableGraphemeMode,
-      useRelation,
-      guideline = '',
-      allowMemberToCreateLabelType
-    }: Omit<ProjectFields, 'tags'>
-  ): Promise<void> {
-    const project = Project.create(
-      projectId,
-      name,
-      description,
-      guideline,
-      projectType,
-      enableRandomOrder,
-      enableSharingMode,
-      exclusiveCategories,
-      allowOverlappingSpans,
-      enableGraphemeMode,
-      useRelation,
-      [],
-      allowMemberToCreateLabelType
-    )
-
-    try {
-      await this.repository.update(project)
     } catch (e: any) {
       throw new Error(e.response.data.detail)
     }

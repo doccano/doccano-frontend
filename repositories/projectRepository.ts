@@ -1,7 +1,7 @@
 import type BaseRepository from './baseRepository'
 import { Page } from '@/domain/models/page'
 import { Project } from '@/domain/models/project'
-import { TagItem } from '@/domain/models/tag'
+import { Tag } from '@/domain/models/tag'
 
 function toModel(item: Record<string, any>): Project {
   return new Project(
@@ -16,7 +16,7 @@ function toModel(item: Record<string, any>): Project {
     item.allow_overlapping,
     item.grapheme_mode,
     item.use_relation,
-    item.tags.map((tag: Record<string, any>) => new TagItem(tag.id, tag.text, tag.project)),
+    item.tags.map((tag: Record<string, any>) => new Tag(tag.id, tag.text, tag.project)),
     item.allow_member_to_create_label_type,
     item.users,
     item.created_at,

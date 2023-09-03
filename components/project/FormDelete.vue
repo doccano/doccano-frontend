@@ -41,4 +41,3 @@ const emits = defineEmits<{
     </q-card-actions>
   </q-card>
 </template>
-domain/models/project

@@ -37,4 +37,3 @@ const translateTypeName = (type: string): string => {
     </template>
   </q-select>
 </template>
-domain/models/projectdomain/models/project

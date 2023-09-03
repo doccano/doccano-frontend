@@ -1,11 +1,11 @@
-export class TagItem {
+export class Tag {
   constructor(
     readonly id: number,
     readonly text: string,
     readonly project: string | number
   ) {}
 
-  static create(text: string): TagItem {
-    return new TagItem(0, text, 0)
+  static create(text: string): Tag {
+    return new Tag(0, text, 0)
   }
 }

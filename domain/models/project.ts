@@ -1,4 +1,4 @@
-import { type TagItem } from './tag'
+import type { Tag } from './tag'
 
 export const DocumentClassification = 'DocumentClassification'
 export const SequenceLabeling = 'SequenceLabeling'
@@ -33,7 +33,7 @@ export const validateNameMaxLength = (name: string): boolean => {
   return name.trim().length <= MAX_PROJECT_NAME_LENGTH
 }
 
-export const canDefineCategory = (projectType: ProjectType): boolean => {
+export const allowCategoryTypeCreation = (projectType: ProjectType): boolean => {
   return [
     DocumentClassification,
     IntentDetectionAndSlotFilling,
@@ -43,12 +43,12 @@ export const canDefineCategory = (projectType: ProjectType): boolean => {
   ].includes(projectType)
 }
 
-export const canDefineSpan = (projectType: ProjectType): boolean => {
+export const allowSpanTypeCreation = (projectType: ProjectType): boolean => {
   return [SequenceLabeling, IntentDetectionAndSlotFilling].includes(projectType)
 }
 
-export const canDefineLabel = (projectType: ProjectType): boolean => {
-  return canDefineCategory(projectType) || canDefineSpan(projectType)
+export const allowLabelTypeCreation = (projectType: ProjectType): boolean => {
+  return allowCategoryTypeCreation(projectType) || allowSpanTypeCreation(projectType)
 }
 
 export class Project {
@@ -67,7 +67,7 @@ export class Project {
     readonly allowOverlappingSpans: boolean,
     readonly enableGraphemeMode: boolean,
     readonly useRelation: boolean,
-    readonly tags: TagItem[],
+    readonly tags: Tag[],
     readonly allowMemberToCreateLabelType: boolean = false,
     readonly users: number[] = [],
     readonly createdAt: string = '',
@@ -104,7 +104,7 @@ export class Project {
     allowOverlappingSpans: boolean,
     enableGraphemeMode: boolean,
     useRelation: boolean,
-    tags: TagItem[],
+    tags: Tag[],
     allowMemberToCreateLabelType: boolean
   ) {
     return new Project(
@@ -124,19 +124,19 @@ export class Project {
     )
   }
 
-  get canDefineLabel(): boolean {
-    return canDefineLabel(this.projectType)
+  get allowLabelTypeCreation(): boolean {
+    return allowLabelTypeCreation(this.projectType)
   }
 
-  get canDefineCategory(): boolean {
-    return canDefineCategory(this.projectType)
+  get allowCategoryTypeCreation(): boolean {
+    return allowCategoryTypeCreation(this.projectType)
   }
 
-  get canDefineSpan(): boolean {
-    return canDefineSpan(this.projectType)
+  get allowSpanTypeCreation(): boolean {
+    return allowSpanTypeCreation(this.projectType)
   }
 
-  get canDefineRelation(): boolean {
+  get allowRelationTypeCreation(): boolean {
     return this.useRelation
   }
 
@@ -154,14 +154,13 @@ export class Project {
     return `${this.projectType}Project`
   }
 
-  // TODO: hasImageTask
-  get isImageProject(): boolean {
+  get hasImageTask(): boolean {
     return [ImageClassification, ImageCaptioning, BoundingBox, Segmentation].includes(
       this.projectType
     )
   }
 
-  get isAudioProject(): boolean {
+  get hasAudioTask(): boolean {
     return [Speech2text].includes(this.projectType)
   }
 }
