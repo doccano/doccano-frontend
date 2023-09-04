@@ -17,7 +17,8 @@ const logout = async () => {
       :class="$q.dark.isActive ? 'bg-grey-9 text-white' : 'bg-grey-1 text-black'"
       style="height: 64px"
     >
-      <layouts-the-header-title class="desktop-only" />
+      <slot name="leftDrawerIcon"></slot>
+      <layouts-the-header-title v-if="!auth.isLoggedIn" class="desktop-only" />
       <q-space />
       <layouts-the-header-button-dark-mode />
       <layouts-the-header-button-locale />

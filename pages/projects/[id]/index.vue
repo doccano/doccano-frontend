@@ -2,6 +2,8 @@
 definePageMeta({
   middleware: ['is-logged-in'],
 
+  layout: 'project',
+
   validate: (route) => {
     return /^\d+$/.test(route.params.id)
   }
