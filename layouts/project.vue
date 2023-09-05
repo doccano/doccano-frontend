@@ -16,7 +16,7 @@ const toggleLeftDrawer = () => {
     </layouts-the-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above side="left" bordered>
-      <!-- drawer content -->
+      <layouts-the-sidebar />
     </q-drawer>
 
     <q-page-container>
@@ -28,5 +28,3 @@ const toggleLeftDrawer = () => {
     <LayoutsTheFooter />
   </q-layout>
 </template>
-
-<style scoped></style>

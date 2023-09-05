@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 definePageMeta({
-  middleware: ['is-logged-in'],
+  middleware: ['is-logged-in', 'set-project'],
 
   layout: 'project',
 
   validate: (route) => {
-    return /^\d+$/.test(route.params.id)
+    return /^\d+$/.test(route.params.id as string)
   }
 })
 
